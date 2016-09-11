@@ -42,14 +42,11 @@ class TestCommonClient(unittest.TestCase):
         for index, individual_diff in enumerate(actual_answer):
             for diff_key in individual_diff:
                 if diff_key == 'diff':
-                    self.assertTrue('sling/trunk/bundles/extensions/models/pom.xml\t(revision 0)' in
+                    self.assertTrue('sling/trunk/bundles/extensions/models/pom.xml' in
                                     individual_diff[diff_key] or 'sling/trunk/pom.xml' in individual_diff[diff_key])
-                    self.assertTrue('artifactId>org.apache.sling.models.reactor</artifactId>\n+' in
-                                    individual_diff[diff_key] or '<module>bundles/extensions/models</module>' in
-                                    individual_diff[diff_key])
-                    self.assertTrue('svn:mime-type\n## -0,0 +1 ' in individual_diff[diff_key] or
-                                    ' <module>bundles/extensions/models/validation-impl</module>'
-                                    in individual_diff[diff_key])
+                    print individual_diff[diff_key]
+                    self.assertTrue('<module>bundles/extensions/models</module>' in individual_diff[diff_key] or
+                                    '<description>Apache Sling Models</description>' in individual_diff[diff_key])
                 else:
                     self.assertEqual(individual_diff[diff_key], diff[index][diff_key])
 
