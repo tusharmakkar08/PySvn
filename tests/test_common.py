@@ -44,7 +44,6 @@ class TestCommonClient(unittest.TestCase):
                 if diff_key == 'diff':
                     self.assertTrue('sling/trunk/bundles/extensions/models/pom.xml' in
                                     individual_diff[diff_key] or 'sling/trunk/pom.xml' in individual_diff[diff_key])
-                    print individual_diff[diff_key]
                     self.assertTrue('<module>bundles/extensions/models</module>' in individual_diff[diff_key] or
                                     '<description>Apache Sling Models</description>' in individual_diff[diff_key])
                 else:
